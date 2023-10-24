@@ -1,0 +1,277 @@
+---
+title: "IntersectionObserver API with React Hooks"
+date: "2019-04-23"
+tags: ['webdev', 'react', 'tutorial']
+draft: false
+summary: Learn to use the IntersectionObserver API with React hooks. 
+---
+
+A simple demo and tutorial showing how to simply use the intersection observer API with React Hooks
+
+Here is a brief synopsis of what we will do:
+
+- create-react-app
+- Initial project setup
+- intersection-observer polyfill
+- Add elements, update CSS
+- Write the hook
+- Initialize the state
+- Construct the IntersectionObserver instance
+- Ensure to only observe the element intersecting once
+- Show the hook in action, via the console
+
+If you want to see it in action checkout the demo [here!](https://billyjacoby.github.io/intersection-observer-hooks)  
+(be sure to have the developer console open)
+
+We'll demonstrate how this works on a simple `create-react-app` skeleton.
+
+First thing we'll do is run:
+
+```bash
+create-react-app intersection-observer-hooks
+cd intersection-observer-hooks
+```
+
+After the initialization we'll install the polyfill for the API, to ensure support for all browsers.
+
+```
+yarn add intersection-observer
+```
+
+Next we'll add a few elements to our app, and tweak the CSS to enable us to see how everything works
+
+**App.js**
+
+```javascript
+...
+<header className="App-header">
+      <img src={logo} className="App-logo" alt="logo" />
+      <p>
+        Edit <code>src/App.js</code> and save to reload.
+      </p>
+      <a
+        className="App-link"
+        href="https://reactjs.org"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Learn React
+      </a>
+    </header>
+<div className="full-height one">
+      <div className="item-one" />
+    </div>
+    <div className="full-height two">
+      <div className="item-two" ref={elementRef}>
+        {inView && <p>I'm in view!</p>}
+      </div>
+    </div>
+    ...
+```
+
+**App.css**
+
+```css
+... .full-height {
+  height: 100vh;
+  border: white dotted 1px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.one {
+  background-color: #61dafb;
+  color: #282c34;
+}
+
+.two {
+  background-color: #282c34;
+  color: #61dafb;
+}
+
+.item-one {
+  background-color: #282c34;
+  color: #61dafb;
+  height: 30%;
+  width: 30%;
+}
+
+.item-two {
+  color: #282c34;
+  background-color: #61dafb;
+  height: 30%;
+  width: 30%;
+}
+```
+
+Next we will create our hook in a separate file called `useIntersectionObserver.js`
+
+The first thing we'll do in this file is configure our hook to take the necessary parameters, configure out state, and output the information we'll want to see.
+
+**useIntersectionObserver.js**
+
+```javascript
+import { useState, useEffect } from "react"
+
+export const useIntersectionObserver = (
+  ref,
+  { threshold, root, rootMargin }
+) => {
+  // configure the state
+  const [state, setState] = useState({
+    inView: false,
+    triggered: false,
+    entry: undefined,
+  })
+
+  return [state.inView, state.entry]
+}
+```
+
+This hook will take a reference to the DOM node, and the options that you would like to pass in to the IntersectionObserver object; threshold, root, and rootMargin. For more information on what these options do, you can check out the MDN docs on the API [here.](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/IntersectionObserver)
+
+Now we'll configure our IntersectionObserver object, and write the callback function to update our state when our DOM node's intersectionRation is greater than 0.
+
+**useIntersectionObserver.js**
+
+```javascript
+...
+const [state, setState] = useState({
+    inView: false,
+    triggered: false,
+    entry: undefined
+  });
+
+  const observer = new IntersectionObserver(
+    (entries, observerInstance) => {
+      // checks to see if the element is intersecting
+      if (entries[0].intersectionRatio > 0) {
+        // if it is update the state, we set triggered as to not re-observe the element
+        setState({
+          inView: true,
+          triggered: true,
+          entry: observerInstance
+        });
+        // unobserve the element
+        observerInstance.unobserve(ref.current);
+      }
+      return;
+    },
+    {
+      threshold: threshold || 0,
+      root: root || null,
+      rootMargin: rootMargin || "0%"
+    }
+  );
+...
+```
+
+Next we'll use React's useEffect hook to ensure that the DOM node reference exists and also to make sure that the inView state has not already been triggered as true. This will finish up our hook, the finished result should look as follows:
+
+**useIntersectionObserver.js**
+
+```javascript
+import { useState, useEffect } from "react"
+
+export const useIntersectionObserver = (
+  ref,
+  { threshold, root, rootMargin }
+) => {
+  // configure the state
+  const [state, setState] = useState({
+    inView: false,
+    triggered: false,
+    entry: undefined,
+  })
+
+  const observer = new IntersectionObserver(
+    (entries, observerInstance) => {
+      // checks to see if the element is intersecting
+      if (entries[0].intersectionRatio > 0) {
+        // if it is update the state, we set triggered as to not re-observe the element
+        setState({
+          inView: true,
+          triggered: true,
+          entry: observerInstance,
+        })
+        // unobserve the element
+        observerInstance.unobserve(ref.current)
+      }
+      return
+    },
+    {
+      threshold: threshold || 0,
+      root: root || null,
+      rootMargin: rootMargin || "0%",
+    }
+  )
+
+  useEffect(() => {
+    // check that the element exists, and has not already been triggered
+    if (ref.current && !state.triggered) {
+      observer.observe(ref.current)
+    }
+  })
+
+  return [state.inView, state.entry]
+}
+```
+
+Now that we have written our hook, its time to import it into our app and see if its working.
+
+**App.js**
+
+```javascript
+...
+import { useIntersectionObserver } from "./useIntersectionObserver";
+
+function App() {
+  // Create the ref to our element
+  const elementRef = useRef(null);
+  const [inView, entry] = useIntersectionObserver(elementRef, {
+    threshold: 0
+  });
+
+  // console.log our state everytime its updated to see if it works.
+  useEffect(() => {
+    console.log(inView);
+  }, [inView]);
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+      <div className="full-height one">
+        <div className="item-one" />
+      </div>
+      <div className="full-height two">
+        <div className="item-two" ref={elementRef}>
+          {inView && <p>I'm in view!</p>}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default App;
+```
+
+Once this is all wired up, run `yarn start` and open your developer console. When the app first loads you should see that the state is first false, then when we scroll to the selected div, the state turns to true!
+
+Thanks for reading and be sure to let me know if you've enjoyed this tutorial!
+
+Shortly I'll post another that shows how to use this to animate elements onto the screen using GSAP.
