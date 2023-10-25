@@ -1,4 +1,5 @@
 const { withContentlayer } = require('next-contentlayer')
+const { redirect } = require('next/dist/server/api-utils')
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
@@ -73,6 +74,15 @@ module.exports = () => {
         {
           source: '/(.*)',
           headers: securityHeaders,
+        },
+      ]
+    },
+    async redirects() {
+      return [
+        {
+          source: '/clone-vm-proxmox',
+          destination: '/blog/clone-vm-proxmox',
+          permanent: true,
         },
       ]
     },
