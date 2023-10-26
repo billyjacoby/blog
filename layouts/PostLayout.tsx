@@ -30,7 +30,7 @@ interface LayoutProps {
 }
 
 export default function PostLayout({ content, authorDetails, next, prev, children }: LayoutProps) {
-  const { filePath, path, slug, date, title, tags } = content
+  const { filePath, path, slug, date, title, tags, lastmod } = content
   const basePath = path.split('/')[0]
 
   return (
@@ -44,8 +44,19 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                 <div>
                   <dt className="sr-only">Published on</dt>
                   <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                    <time dateTime={date}>
+                    <time dateTime={date} className="flex flex-col">
                       {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
+                      {lastmod && (
+                        <>
+                          <small>
+                            Updated{' '}
+                            {new Date(lastmod).toLocaleDateString(
+                              siteMetadata.locale,
+                              postDateTemplate
+                            )}
+                          </small>
+                        </>
+                      )}
                     </time>
                   </dd>
                 </div>
