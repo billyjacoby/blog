@@ -1,10 +1,11 @@
 ---
 title: Building a GatsbyJS Theme - Part Two
-date: "2019-05-25"
-tags: ["webdev"]
+date: '2019-05-25'
+tags: ['webdev']
 draft: false
 summary: This is part two in a multi-part tutorial series on building your own Gatsby theme from scratch.
 ---
+
 ## Designing and configuring our Layout
 
 This is part two in a multi-part tutorial series on building your own Gatsby theme from scratch.
@@ -52,8 +53,8 @@ main {
 **`/packages/gatsby-theme-tutorial/src/components/layout.js`**
 
 ```javascript
-import React from "react";
-import "../styles/layout.css";
+import React from 'react';
+import '../styles/layout.css';
 
 const Layout = ({ children }) => {
   return (
@@ -71,8 +72,8 @@ Now the main difference in using a layout component in a normal Gatsby project, 
 **`/packages/gatsby-theme-tutorial/src/pages/index.js`**
 
 ```javascript
-import React from "react";
-import Layout from "../components/layout";
+import React from 'react';
+import Layout from '../components/layout';
 
 export default () => (
   <Layout>
@@ -86,7 +87,7 @@ Now lets add an About page to our site directory.
 **`/site/src/pages/about.js`**
 
 ```javascript
-import React from "react";
+import React from 'react';
 
 const AboutPage = () => {
   return (
@@ -118,7 +119,7 @@ Go ahead and revert your `index.js` back to just an H1 tag.
 **`/packages/gatsby-theme-tutorial/src/pages/index.js`**
 
 ```javascript
-import React from "react";
+import React from 'react';
 
 export default () => <h1>Hello World!</h1>;
 ```
@@ -141,8 +142,8 @@ And
 **`/packages/gatsby-theme-tutorial/gatsby-ssr.js`**
 
 ```javascript
-import React from "react";
-import Layout from "./src/components/layout";
+import React from 'react';
+import Layout from './src/components/layout';
 
 export const wrapPageElement = ({ element, props }) => {
   // props provide same data to Layout as Page element will get
@@ -168,16 +169,16 @@ TO do this lets add some site information to the `gatsby-config.js` for our them
 module.exports = {
   siteMetadata: {
     title: `Gatsby Theme Tutorial`,
-    description: `A tutorial for building a GatsbyJS theme from scratch!`
+    description: `A tutorial for building a GatsbyJS theme from scratch!`,
   },
   plugins: [
     {
       resolve: `gatsby-plugin-page-creator`,
       options: {
-        path: `${__dirname}/src/pages`
-      }
-    }
-  ]
+        path: `${__dirname}/src/pages`,
+      },
+    },
+  ],
 };
 ```
 
@@ -186,10 +187,10 @@ Now in our Header component we need to query for our site title. We'll do this u
 **`/packages/gatsby-theme-tutorial/src/components/header.js`**
 
 ```javascript
-import React from "react";
-import { useStaticQuery, graphql, Link } from "gatsby";
+import React from 'react';
+import { useStaticQuery, graphql, Link } from 'gatsby';
 
-import "../styles/header.css";
+import '../styles/header.css';
 
 const Header = () => {
   const data = useStaticQuery(graphql`
@@ -248,9 +249,9 @@ This is great! Noe we can access our site metadata from our `gatbsy-config.js` f
 module.exports = {
   siteMetadata: {
     title: `New Gatsby Site`,
-    description: `A website using our Gatsby theme!`
+    description: `A website using our Gatsby theme!`,
   },
-  __experimentalThemes: ["gatsby-theme-tutorial"]
+  __experimentalThemes: ['gatsby-theme-tutorial'],
 };
 ```
 
@@ -265,10 +266,10 @@ All we have to do is import our `header.js` file into our `layout.js` component 
 **`/packages/gatsby-theme-tutorial/components/layout.js`**
 
 ```javascript
-import React from "react";
-import "../styles/layout.css";
+import React from 'react';
+import '../styles/layout.css';
 
-import Header from "./header";
+import Header from './header';
 
 const Layout = ({ children }) => {
   return (

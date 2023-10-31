@@ -267,18 +267,18 @@ See [Next.js on Netlify](https://docs.netlify.com/integrations/frameworks/next-j
 Here's an example on how to create a donut chart from Chart.js (assuming you already have the dependencies installed) and use it in MDX posts. First, create a new `DonutChart.tsx` component in `components`:
 
 ```tsx
-'use client'
+'use client';
 
-import { Doughnut } from 'react-chartjs-2'
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
+import { Doughnut } from 'react-chartjs-2';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 
-ChartJS.register(ArcElement, Tooltip, Legend)
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DonutChart = ({ data }) => {
-  return <Doughnut data={data} />
-}
+  return <Doughnut data={data} />;
+};
 
-export default Doughnut
+export default Doughnut;
 ```
 
 Since the underlying `Doughnut` component uses React hooks, we add the `'use client'` directive to specify that it is a client side component. Also, there is an existing issue which prevents named components from being used, so we need to export the component as the default export.
@@ -315,11 +315,15 @@ export const data = {
         'rgba(54, 162, 235, 0.2)',
         'rgba(255, 206, 86, 0.2)',
       ],
-      borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)'],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+      ],
       borderWidth: 1,
     },
   ],
-}
+};
 
 <DonutChart data={data} />
 ```
@@ -333,15 +337,15 @@ Add a `SearchProvider` component such as the one shown below and use it in place
 `onSearchDocumentsLoad` is a callback function that is called when the documents specified by `searchDocumentsPath` are loaded. Set `searchDocumentsPath` to `false` to disable the dynamically loaded search feature.
 
 ```tsx
-'use client'
+'use client';
 
-import { KBarSearchProvider } from 'pliny/search/KBar'
-import { useRouter } from 'next/navigation'
-import { CoreContent } from 'pliny/utils/contentlayer'
-import { Blog } from 'contentlayer/generated'
+import { KBarSearchProvider } from 'pliny/search/KBar';
+import { useRouter } from 'next/navigation';
+import { CoreContent } from 'pliny/utils/contentlayer';
+import { Blog } from 'contentlayer/generated';
 
 export const SearchProvider = ({ children }) => {
-  const router = useRouter()
+  const router = useRouter();
   return (
     <KBarSearchProvider
       kbarConfig={{
@@ -372,14 +376,14 @@ export const SearchProvider = ({ children }) => {
             section: 'Blog',
             subtitle: post.tags.join(', '),
             perform: () => router.push(post.path),
-          }))
+          }));
         },
       }}
     >
       {children}
     </KBarSearchProvider>
-  )
-}
+  );
+};
 ```
 
 ## Support

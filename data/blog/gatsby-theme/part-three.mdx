@@ -1,10 +1,11 @@
 ---
 title: Building a GatsbyJS Theme - Part Three
-date: "2019-11-21"
+date: '2019-11-21'
 tags: ['webdev']
 draft: false
 summary: This is part three in a multi-part tutorial series on building your own Gatsby theme from scratch.
 ---
+
 ## Making our existing theme composable
 
 This is part three in a multi-part tutorial series on building your own Gatsby theme from scratch.
@@ -62,13 +63,13 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: "gatsby-theme-style",
+      resolve: 'gatsby-theme-style',
       options: {
         // blank for now, but we;ll be coming back to this
       },
     },
   ],
-}
+};
 ```
 
 Now if we run `yarn workspace site develop` you should see that our site works the exact same way that it did at the end of our last tutorial. Now about that empty options object…
@@ -87,13 +88,13 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: "gatsby-theme-style",
+      resolve: 'gatsby-theme-style',
       options: {
         wrapRootElement: false,
       },
     },
   ],
-}
+};
 ```
 
 Now in order to be able to access this options object in our theme we must make a change to our theme's `gatbsy-config.js`
@@ -101,7 +102,7 @@ Now in order to be able to access this options object in our theme we must make 
 #### packages/gatsby-theme-style/gatsby-config.js
 
 ```javascript
-module.exports = themeOptions => ({
+module.exports = (themeOptions) => ({
   siteMetadata: {
     title: `Gatsby Theme Tutorial`,
     description: `A tutorial for building a GatsbyJS theme from scratch!`,
@@ -114,7 +115,7 @@ module.exports = themeOptions => ({
       },
     },
   ],
-})
+});
 ```
 
 This will enable us to access the `themeOptions` object just about anywhere in our theme to make decisions based on the options passed in. Now lets utilize this object in both our `packages/gatsby-theme-style/gatsby-browser.js` and `packages/gatsby-theme-style/gatsby-ssr.js` files to determine whether or not we should wrap our root element in our theme's styles or not.
@@ -126,18 +127,18 @@ AND
 #### packages/gatsby-theme-style/gatsby-ssr.js
 
 ```javascript
-import React from "react"
-import Layout from "./src/components/layout"
+import React from 'react';
+import Layout from './src/components/layout';
 
 export const wrapPageElement = ({ element, props }, themeOptions) => {
   // props provide same data to Layout as Page element will get
   // including location, data, etc - you don't need to pass it
   if (themeOptions.wrapRootElement) {
-    return <Layout {...props}>{element}</Layout>
+    return <Layout {...props}>{element}</Layout>;
   } else {
-    return
+    return;
   }
-}
+};
 ```
 
 After we make this change we see that our website no longer has any styles applied! Now if we toggle the `wrapRootElement` option to true in our `site/gatsby-config.js` file, we'll see all of our styles get applied again.
@@ -149,10 +150,10 @@ Before we do anything else lets add a quick navbar component to our theme so tha
 #### packages/gatsby-theme-style/src/components/navbar.js
 
 ```javascript
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react';
+import { Link } from 'gatsby';
 
-import "../styles/navbar.css"
+import '../styles/navbar.css';
 
 const Navbar = () => {
   return (
@@ -163,10 +164,10 @@ const Navbar = () => {
         </li>
       </ul>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
 ```
 
 #### packages/gatsby-theme-style/src/style/navbar.css
@@ -219,11 +220,11 @@ Then lets make a few changes to our `Header.css` and add the component to our he
 #### packages/gatsby-theme-style/src/components/header.js
 
 ```javascript
-import React from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
-import Navbar from "./navbar"
+import React from 'react';
+import { useStaticQuery, graphql, Link } from 'gatsby';
+import Navbar from './navbar';
 
-import "../styles/header.css"
+import '../styles/header.css';
 
 const Header = () => {
   const data = useStaticQuery(graphql`
@@ -235,7 +236,7 @@ const Header = () => {
         }
       }
     }
-  `)
+  `);
 
   return (
     <div className="header">
@@ -245,10 +246,10 @@ const Header = () => {
       </Link>
       <Navbar />
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
 ```
 
 Now when we go to our home page we see the navbar with a link to the home page. This is where things can get a little more complicated.
@@ -287,14 +288,14 @@ Now in our theme, lets make this object accessible to our siteMetadata object.
 #### packages/gatsby-theme-style/gatsby-config.js
 
 ```javascript
-module.exports = themeOptions => ({
+module.exports = (themeOptions) => ({
   siteMetadata: {
     title: `Gatsby Theme Tutorial`,
     description: `A tutorial for building a GatsbyJS theme from scratch!`,
     // NEW
     navigationPages: themeOptions.navigationPages
       ? [...themeOptions.navigationPages]
-      : "null",
+      : 'null',
   },
   plugins: [
     {
@@ -304,7 +305,7 @@ module.exports = themeOptions => ({
       },
     },
   ],
-})
+});
 ```
 
 I'm not sure if there is a better way, but in order to allow the graphql query to fail silently we need to use a ternary operator here in order to check if this option was passed into our theme. This way if a user does not pass additional pages in to our theme package we can still query the rest of the siteMetadata without getting an error from graphql.
@@ -378,9 +379,9 @@ Currently the only line of code in this file is a comment that reads `//no-op`. 
 #### packages/gatsby-theme-style/index.js
 
 ```javascript
-export { default as Layout } from "./src/components/layout"
-export { default as Header } from "./src/components/header"
-export { default as Navbar } from "./src/components/navbar"
+export { default as Layout } from './src/components/layout';
+export { default as Header } from './src/components/header';
+export { default as Navbar } from './src/components/navbar';
 ```
 
 Now lets change the wrapRootElement option in out `site/gatsby-config.js` file to false so that we can selectively choose which page will be styled with out Layout component.
@@ -398,14 +399,14 @@ After restarting our development server we will see that our theme's styles are 
 #### site/src/pages/index.js
 
 ```javascript
-import React from "react"
-import { Layout } from "gatsby-theme-style"
+import React from 'react';
+import { Layout } from 'gatsby-theme-style';
 
 export default () => (
   <Layout>
     <h1>Hello World!</h1>
   </Layout>
-)
+);
 ```
 
 Just like that all of the components from our theme are now importable and able to be used by any site that is using them!

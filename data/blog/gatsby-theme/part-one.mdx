@@ -1,7 +1,7 @@
 ---
 title: Building a GatsbyJS Theme - Part One
-date: "2019-05-12"
-tags: ["webdev"]
+date: '2019-05-12'
+tags: ['webdev']
 draft: false
 summary: This is the first part in a multi-part tutorial series on building your own Gatsby theme from scratch.
 ---
@@ -215,10 +215,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-page-creator`,
       options: {
-        path: `${__dirname}/src/pages`
-      }
-    }
-  ]
+        path: `${__dirname}/src/pages`,
+      },
+    },
+  ],
 };
 ```
 
@@ -236,7 +236,7 @@ And in out `site` folder we need to create a super simple config file that tells
 
 ```javascript
 module.exports = {
-  __experimentalThemes: ["gatsby-theme-tutorial"]
+  __experimentalThemes: ['gatsby-theme-tutorial'],
 };
 ```
 
@@ -247,9 +247,7 @@ Now lets create a basic index page in our theme folder and see if everything is 
 ```javascript
 import React from 'react';
 
-export default () => (
-  <h1>Hello World!</h1>
-);
+export default () => <h1>Hello World!</h1>;
 ```
 
 Now to check our work…

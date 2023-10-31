@@ -1,9 +1,9 @@
 ---
-title: "IntersectionObserver API with React Hooks"
-date: "2019-04-23"
+title: 'IntersectionObserver API with React Hooks'
+date: '2019-04-23'
 tags: ['webdev', 'react', 'tutorial']
 draft: false
-summary: Learn to use the IntersectionObserver API with React hooks. 
+summary: Learn to use the IntersectionObserver API with React hooks.
 ---
 
 A simple demo and tutorial showing how to simply use the intersection observer API with React Hooks
@@ -113,7 +113,7 @@ The first thing we'll do in this file is configure our hook to take the necessar
 **useIntersectionObserver.js**
 
 ```javascript
-import { useState, useEffect } from "react"
+import { useState, useEffect } from 'react';
 
 export const useIntersectionObserver = (
   ref,
@@ -124,10 +124,10 @@ export const useIntersectionObserver = (
     inView: false,
     triggered: false,
     entry: undefined,
-  })
+  });
 
-  return [state.inView, state.entry]
-}
+  return [state.inView, state.entry];
+};
 ```
 
 This hook will take a reference to the DOM node, and the options that you would like to pass in to the IntersectionObserver object; threshold, root, and rootMargin. For more information on what these options do, you can check out the MDN docs on the API [here.](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/IntersectionObserver)
@@ -173,7 +173,7 @@ Next we'll use React's useEffect hook to ensure that the DOM node reference exis
 **useIntersectionObserver.js**
 
 ```javascript
-import { useState, useEffect } from "react"
+import { useState, useEffect } from 'react';
 
 export const useIntersectionObserver = (
   ref,
@@ -184,7 +184,7 @@ export const useIntersectionObserver = (
     inView: false,
     triggered: false,
     entry: undefined,
-  })
+  });
 
   const observer = new IntersectionObserver(
     (entries, observerInstance) => {
@@ -195,28 +195,28 @@ export const useIntersectionObserver = (
           inView: true,
           triggered: true,
           entry: observerInstance,
-        })
+        });
         // unobserve the element
-        observerInstance.unobserve(ref.current)
+        observerInstance.unobserve(ref.current);
       }
-      return
+      return;
     },
     {
       threshold: threshold || 0,
       root: root || null,
-      rootMargin: rootMargin || "0%",
+      rootMargin: rootMargin || '0%',
     }
-  )
+  );
 
   useEffect(() => {
     // check that the element exists, and has not already been triggered
     if (ref.current && !state.triggered) {
-      observer.observe(ref.current)
+      observer.observe(ref.current);
     }
-  })
+  });
 
-  return [state.inView, state.entry]
-}
+  return [state.inView, state.entry];
+};
 ```
 
 Now that we have written our hook, its time to import it into our app and see if its working.

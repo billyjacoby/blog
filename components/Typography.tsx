@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-type PropsWithClassName = React.PropsWithChildren & { className?: string }
+type PropsWithClassName = React.PropsWithChildren & { className?: string };
 
 export const Heading3 = (props: PropsWithClassName) => (
   <h3
@@ -12,21 +12,22 @@ export const Heading3 = (props: PropsWithClassName) => (
   >
     {props.children}
   </h3>
-)
+);
 
 export const Paragraph = (props: PropsWithClassName) => (
   <p
     {...props}
     className={
-      'mt-3 text-lg text-gray-900 dark:text-gray-100 sm:text-xl md:text-xl ' + props.className
+      'mt-3 text-lg text-gray-900 dark:text-gray-100 sm:text-xl md:text-xl ' +
+      props.className
     }
   >
     {props.children}
   </p>
-)
+);
 
 export const Highlight = (props: PropsWithClassName) => (
   <span {...props} className={'text-green-400' + props.className}>
     {props.children}
   </span>
-)
+);

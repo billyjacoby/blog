@@ -1,9 +1,9 @@
 ---
-title: "Greensock Animations using React Hooks"
-date: "2019-04-20"
+title: 'Greensock Animations using React Hooks'
+date: '2019-04-20'
 tags: ['webdev', 'react', 'tutorial']
 draft: false
-summary: How to use Greensock Animations with React and hooks. 
+summary: How to use Greensock Animations with React and hooks.
 ---
 
 ## A quick example for how to use Greensock on demand animations with react hooks
@@ -77,9 +77,9 @@ Now we're going to add three buttons to our app that Pause, Play, and Reverse ou
 Your `App.js` should look similar to this after adding the buttons:
 
 ```javascript
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
 
 const App = () => {
   return (
@@ -116,16 +116,16 @@ Okay, now for the real work. In order to accomplish this correctly only using a 
 Replace the `import React from "react";` line with:
 
 ```javascript
-import React, {useState, useRef, useEffect} from "react";
+import React, { useState, useRef, useEffect } from 'react';
 ```
 
 The first thing we'll do is create a new ref and store the react img logo in it. This will ensure that this node is loaded on the DOM before we try to animate it with Greensock.
 
 ```javascript
 // new
-import React, { useState, useRef, useEffect } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React, { useState, useRef, useEffect } from 'react';
+import logo from './logo.svg';
+import './App.css';
 
 const App = () => {
   // new
@@ -139,7 +139,7 @@ const App = () => {
           className="App-logo"
           alt="logo"
           // new
-          ref={element => {
+          ref={(element) => {
             imgRef = element;
           }}
         />
@@ -170,12 +170,11 @@ export default App;
 The next thing we'll do is create a react state object to store our animation function in. This will ensure that we are always accessing the already existing animation function as opposed to creating a new one.
 
 ```javascript
-import React, { useState, useRef, useEffect } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React, { useState, useRef, useEffect } from 'react';
+import logo from './logo.svg';
+import './App.css';
 
 const App = () => {
-
   let imgRef = useRef(null);
 
   // New
@@ -188,7 +187,7 @@ const App = () => {
           src={logo}
           className="App-logo"
           alt="logo"
-          ref={element => {
+          ref={(element) => {
             imgRef = element;
           }}
         />
@@ -219,13 +218,12 @@ export default App;
 Next we have to use the useEffect hook to make sure that the animation is only created once the DOM has been rendered. We will create our animation function here and store it in our state object.
 
 ```javascript
-import React, { useState, useRef, useEffect } from "react";
-import { TweenMax } from "gsap";
-import logo from "./logo.svg";
-import "./App.css";
+import React, { useState, useRef, useEffect } from 'react';
+import { TweenMax } from 'gsap';
+import logo from './logo.svg';
+import './App.css';
 
 const App = () => {
-
   let imgRef = useRef(null);
 
   const [animation, setAnimation] = useState(null);
@@ -235,7 +233,7 @@ const App = () => {
     setAnimation(
       TweenMax.to(imgRef, 10, {
         rotation: 360,
-        repeat: -1
+        repeat: -1,
       }).pause()
     );
   }, []);
@@ -247,7 +245,7 @@ const App = () => {
           src={logo}
           className="App-logo"
           alt="logo"
-          ref={element => {
+          ref={(element) => {
             imgRef = element;
           }}
         />
@@ -280,10 +278,10 @@ Since we don't want our animation to play as soon as it's loaded, we throw the `
 The last thing to do is to wire up our buttons to do their jobs!
 
 ```javascript
-import React, { useState, useRef, useEffect } from "react";
-import { TweenMax } from "gsap";
-import logo from "./logo.svg";
-import "./App.css";
+import React, { useState, useRef, useEffect } from 'react';
+import { TweenMax } from 'gsap';
+import logo from './logo.svg';
+import './App.css';
 
 const App = () => {
   let imgRef = useRef(null);
@@ -294,7 +292,7 @@ const App = () => {
     setAnimation(
       TweenMax.to(imgRef, 10, {
         rotation: 360,
-        repeat: -1
+        repeat: -1,
       }).pause()
     );
   }, []);
@@ -306,7 +304,7 @@ const App = () => {
           src={logo}
           className="App-logo"
           alt="logo"
-          ref={element => {
+          ref={(element) => {
             imgRef = element;
           }}
         />

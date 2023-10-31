@@ -1,1 +1,10 @@
-{"linux":3,"devops":3,"arduino":1,"hardware":1,"3d-printing":1,"webdev":7,"react":2,"tutorial":2}
+{
+  "linux": 3,
+  "devops": 3,
+  "arduino": 1,
+  "hardware": 1,
+  "3d-printing": 1,
+  "webdev": 7,
+  "react": 2,
+  "tutorial": 2
+}
