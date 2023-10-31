@@ -26,9 +26,9 @@ export const HighlightSection = ({
       <div className="mt-8 flex flex-col items-center gap-5  sm:flex-row" key={highlight.title}>
         <Highlight
           className={clsx(
-            'flex-1 -rotate-3 text-4xl font-bold hover:animate-ping ',
-            headingOrder,
+            'flex-1 -rotate-3 text-4xl font-bold hover:animate-ping',
             color,
+            headingOrder,
             rotation
           )}
         >

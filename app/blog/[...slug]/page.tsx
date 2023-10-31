@@ -36,8 +36,6 @@ export async function generateMetadata({
     return
   }
 
-  console.log('🪵 | file: page.tsx:40 | post.lastmod:', post.lastmod)
-  console.log('🪵 | file: page.tsx:41 |  post.date:', post.date)
   const modifiedAt = new Date(post.lastmod || post.date).toISOString()
   const publishedAt = modifiedAt
   const authors = authorDetails.map((author) => author.name)

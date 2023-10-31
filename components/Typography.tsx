@@ -26,7 +26,7 @@ export const Paragraph = (props: PropsWithClassName) => (
 )
 
 export const Highlight = (props: PropsWithClassName) => (
-  <span {...props} className={'text-green-400 ' + props.className}>
+  <span {...props} className={'text-green-400' + props.className}>
     {props.children}
   </span>
 )
