@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { Highlight, Paragraph } from './Typography';
+import { Paragraph } from './Typography';
 
 export const HighlightSection = ({
   highlights,
@@ -27,7 +27,7 @@ export const HighlightSection = ({
         className="mt-8 flex flex-col items-center gap-5  sm:flex-row"
         key={highlight.title}
       >
-        <Highlight
+        <span
           className={clsx(
             'flex-1 -rotate-3 text-4xl font-bold hover:animate-ping',
             color,
@@ -36,7 +36,7 @@ export const HighlightSection = ({
           )}
         >
           {highlight.title}
-        </Highlight>
+        </span>
         <Paragraph className={clsx('flex-2', contentOrder)}>
           {highlight.content}
         </Paragraph>

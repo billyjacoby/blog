@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React from 'react';
 
 type PropsWithClassName = React.PropsWithChildren & { className?: string };
@@ -27,7 +28,7 @@ export const Paragraph = (props: PropsWithClassName) => (
 );
 
 export const Highlight = (props: PropsWithClassName) => (
-  <span {...props} className={'text-green-400' + props.className}>
+  <span {...props} className={'text-green-400'}>
     {props.children}
   </span>
 );
