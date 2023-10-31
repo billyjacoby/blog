@@ -4243,6 +4243,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"clsx@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "clsx@npm:2.0.0"
+  checksum: 943766d1b02fee3538c871e56638d87f973fbc2d6291ce221215ea436fdecb9be97ad323f411839c2d52c45640c449b1a53fbfe7e8b3d529b4e263308b630c9a
+  languageName: node
+  linkType: hard
+
 "color-convert@npm:^1.9.0":
   version: 1.9.3
   resolution: "color-convert@npm:1.9.3"
@@ -9512,6 +9519,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-simple-typewriter@npm:^5.0.1":
+  version: 5.0.1
+  resolution: "react-simple-typewriter@npm:5.0.1"
+  peerDependencies:
+    react: ">=18.0.0"
+    react-dom: ">=18.0.0"
+  checksum: 40018650010d3bc3396ffc9fb7be2658f193e2478e9ad3c16c2b5548c955cdee6f10d2815494b106b1b1700475dc13bad8e0c0b48a9d23a51e16e6f2a8410ab5
+  languageName: node
+  linkType: hard
+
 "react-virtual@npm:^2.8.2":
   version: 2.10.4
   resolution: "react-virtual@npm:2.10.4"
@@ -11051,6 +11068,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:^6.1.0"
     "@typescript-eslint/parser": "npm:^6.1.0"
     autoprefixer: "npm:^10.4.13"
+    clsx: "npm:^2.0.0"
     contentlayer: "npm:0.3.4"
     cross-env: "npm:^7.0.3"
     esbuild: "npm:0.18.11"
@@ -11072,6 +11090,7 @@ __metadata:
     prettier-plugin-tailwindcss: "npm:^0.4.1"
     react: "npm:18.2.0"
     react-dom: "npm:18.2.0"
+    react-simple-typewriter: "npm:^5.0.1"
     reading-time: "npm:1.5.0"
     rehype-autolink-headings: "npm:^6.1.0"
     rehype-citation: "npm:^1.0.2"
