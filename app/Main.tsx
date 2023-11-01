@@ -8,30 +8,38 @@ import { Typewriter } from 'react-simple-typewriter';
 import { Highlight, Paragraph, Heading3 } from '@/components/Typography';
 import { HighlightSection } from '@/components/HightlightSection';
 import { mainData } from '@/data/mainData';
+import React from 'react';
 
 const MAX_DISPLAY = 3;
 
 export default function Home({ posts }) {
+  const [isLoaded, setIsLoaded] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsLoaded(true);
+  }, []);
   return (
     <>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         <div className="mb-5">
           <h1 className="text-2xl sm:text-3xl sm:leading-10 md:text-4xl md:leading-10">
             a <Highlight>collection</Highlight> of{' '}
-            <Typewriter
-              words={[
-                'blog posts.',
-                'tech demos.',
-                'tutorials.',
-                'reviews.',
-                'random thoughts.',
-              ]}
-              loop
-              typeSpeed={40}
-              deleteSpeed={40}
-              cursor
-              cursorColor="rgb(74 222 128 / var(--tw-text-opacity))"
-            />
+            {isLoaded && (
+              <Typewriter
+                words={[
+                  'blog posts.',
+                  'tech demos.',
+                  'tutorials.',
+                  'reviews.',
+                  'random thoughts.',
+                ]}
+                loop
+                typeSpeed={40}
+                deleteSpeed={40}
+                cursor
+                cursorColor="rgb(74 222 128 / var(--tw-text-opacity))"
+              />
+            )}
           </h1>
           <Paragraph>
             hi, I’m billy jacoby – a full time software engineer, tech
