@@ -1,10 +1,12 @@
 import clsx from 'clsx';
 import { Paragraph } from './Typography';
 
+import { mainData } from '@/data/mainData';
+
 export const HighlightSection = ({
-  highlights,
+  highlights = mainData.highlights,
 }: {
-  highlights: { title: string; content: string }[];
+  highlights?: { title: string; content: string }[];
 }) => {
   return highlights.map((highlight, index) => {
     const isEven = index % 2 === 0;

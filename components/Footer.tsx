@@ -18,12 +18,16 @@ export default function Footer() {
           <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={6} />
           <SocialIcon kind="twitter" href={siteMetadata.twitter} size={6} />
         </div>
-        <div className="mb-6 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
-          <div>{siteMetadata.author}</div>
-          <div>{` • `}</div>
-          <div>{`© ${new Date().getFullYear()}`}</div>
-          <div>{` • `}</div>
-          <Link href="/">{siteMetadata.title}</Link>
+        <div className="mb-6 flex flex-wrap items-center space-x-2 text-center text-sm text-gray-500 dark:text-gray-400 sm:flex-nowrap">
+          <div className="0 flex flex-1 flex-row justify-center gap-2">
+            <div className="whitespace-nowrap">{siteMetadata.author}</div>
+            <div>{` | `}</div>
+            <div className="whitespace-nowrap">{`© ${new Date().getFullYear()}`}</div>
+          </div>
+          <div className="flex gap-2">
+            <div className="hidden sm:flex">{` | `}</div>
+            <Link href="/">{siteMetadata.title}</Link>
+          </div>
         </div>
       </div>
     </footer>

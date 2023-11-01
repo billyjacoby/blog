@@ -7,8 +7,9 @@ import NewsletterForm from 'pliny/ui/NewsletterForm';
 import { Typewriter } from 'react-simple-typewriter';
 import { Highlight, Paragraph, Heading3 } from '@/components/Typography';
 import { HighlightSection } from '@/components/HightlightSection';
+import { mainData } from '@/data/mainData';
 
-const MAX_DISPLAY = 5;
+const MAX_DISPLAY = 3;
 
 export default function Home({ posts }) {
   return (
@@ -46,24 +47,7 @@ export default function Home({ posts }) {
             mobile friendly applications.
           </Paragraph>
           <div className="flex flex-col gap-4">
-            <HighlightSection
-              highlights={[
-                {
-                  title: 'Learner',
-                  content: `I love to learn. New programming languages, new JavaScript frameworks, and
-                everything Web3 related – learning is my strong suit.`,
-                },
-                {
-                  title: 'JavaScript Master',
-                  content: `Master of JavaScript both in the browser and on a server. Over 5 years of experience using JavaScript, React, and NodeJS`,
-                },
-                {
-                  title: 'Expert Communicator',
-                  content: `Selling new ideas or products, breaking down complex problems, and bridging the gap
-                between different departments – all of these are things I am very experienced in.`,
-                },
-              ]}
-            />
+            <HighlightSection />
           </div>
         </div>
         <div className="py-5">
@@ -74,9 +58,9 @@ export default function Home({ posts }) {
             Open to collaborate on React based Javascript web applications
           </Paragraph>
           <ul className="ml-6 mt-3 list-disc marker:text-fuchsia-600">
-            <li>GatsbyJS contributor</li>
-            <li>Proficient in NextJS with a variety of database backends</li>
-            <li>React Native aficionado</li>
+            {mainData.strengths.map((st) => (
+              <li key={st}>{st}</li>
+            ))}
           </ul>
         </div>
         <div className="space-y-2 pb-8 pt-6 md:space-y-5">

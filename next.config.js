@@ -14,6 +14,7 @@ const ContentSecurityPolicy = `
   media-src *.s3.amazonaws.com;
   connect-src *;
   font-src 'self';
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.googletagmanager.com *.google-analytics.com;
   frame-src giscus.app
 `;
 
@@ -82,6 +83,51 @@ module.exports = () => {
         {
           source: '/clone-vm-proxmox',
           destination: '/blog/clone-vm-proxmox',
+          permanent: true,
+        },
+        {
+          source: '/creating-a-garage-for-my-roomba',
+          destination: '/blog/creating-a-garage-for-my-roomba',
+          permanent: true,
+        },
+        {
+          source: '/how-to-expand-the-disk-on-a-ubuntu-vm',
+          destination: '/blog/how-to-expand-the-disk-on-a-ubuntu-vm',
+          permanent: true,
+        },
+        {
+          source: '/what-is-html-canvas',
+          destination: '/blog/what-is-html-canvas',
+          permanent: true,
+        },
+        {
+          source: '/building-a-gatsbyjs-theme-part-three',
+          destination: '/blog/gatsby-theme/part-three',
+          permanent: true,
+        },
+        {
+          source: '/building-a-gatsbyjs-theme-part-two',
+          destination: '/blog/gatsby-theme/part-two',
+          permanent: true,
+        },
+        {
+          source: '/building-a-gatsbyjs-theme-part-three',
+          destination: '/blog/gatsby-theme/part-one',
+          permanent: true,
+        },
+        {
+          source: '/building-a-gatsbyjs-theme-introduction',
+          destination: '/blog/gatsby-theme/introduction',
+          permanent: true,
+        },
+        {
+          source: '/intersectionobserver-api-with-react-hooks',
+          destination: '/blog/intersectionobserver-api-with-react-hooks',
+          permanent: true,
+        },
+        {
+          source: '/gasp-with-react',
+          destination: '/blog/gsap-with-react',
           permanent: true,
         },
       ];
