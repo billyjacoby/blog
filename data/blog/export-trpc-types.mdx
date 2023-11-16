@@ -48,7 +48,7 @@ Now that we've got a basic server up and running we can start work on exporting 
 
 After running `yarn trpc-api-export` in the root of the project you'll see that we have our types exported in our `trpc-api-export/dist` folder. This is a great start! We'll want to add a new `package.json` file to this directory that includes any packages that we'll need in our client application. This is also how we'll name our types package so run through the `npm init` command in this directory and fill it out accordingly. In this example, the imports that you see in this directory's `index.d.ts` file. For this example we'll need the following packages:
 
-```javascript
+```json:trpc-api-export/package.json
     "@trpc/server": "^10.43.3",
     "express": "^4.18.2",
     "express-serve-static-core": "^0.1.1",
@@ -61,7 +61,7 @@ Next in order to make this as easy as possible we want to add a bash script that
 
 Add a `bin/publish.sh` file that contains the following:
 
-```bash
+```bash:bin/publish.sh
 #!/bin/bash
 
 cd trpc-api-export && yarn publish
@@ -70,7 +70,7 @@ echo "Published!"
 
 Then make sure that you've got a publish script added to the `trpc-api-export/package.json` like this:
 
-```json
+```json:trpc-api-export/package.json
 ...
   "scripts": {
     "publish": "npm publish --access public"
@@ -86,8 +86,7 @@ Once you're all ready to go with NPM, lets edit our top level publish script to 
 
 Our top level publish command should look something like this:
 
-`~/package.json`
-```json
+```json:package.json
 ...
   "scripts": {
     "trpc-api-export": "tsup --config trpc-api-export/builder/tsup.config.ts && npm run format-fix",
