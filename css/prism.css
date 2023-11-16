@@ -5,6 +5,15 @@
  * Ported for PrismJS by Marc Backes [@themarcba]
  */
 
+ /* Code title styles */
+.remark-code-title {
+  @apply rounded-t bg-gray-700 dark:bg-gray-900 px-5 py-3 font-mono text-sm font-bold text-gray-200 border border-white border-b-0;
+}
+
+.remark-code-title + div > pre {
+  @apply mt-0 rounded-t-none;
+}
+
 pre:has(code[class*='language-']) {
   border: solid 1px white;
 }

@@ -16,8 +16,8 @@ export const mainData = {
     },
   ],
   strengths: [
-    'GatsbyJS contributor',
-    'Proficient in NextJS with a variety of database connections',
+    'Open source contributor',
     'React Native aficionado',
+    'NextJS expert, SEO and performance specialist',
   ],
 };
