@@ -1,0 +1,129 @@
+---
+title: How to use tRPC types outside of a monorepo
+date: '2023-11-15'
+tags: ['webdev', 'tutorial']
+draft: false
+summary: This article provides a tutorial on how to use tRPC outside of a monorepo. It covers setting up a tRPC repo, exporting the types as an npm package, and consuming these types in another repository.
+---
+
+
+## Introduction
+
+If you've stumbled upon this post, then I'm sure you're at least sort of familiar with what tRPC is and some of the benefits that it can offer. But for those who might not be here's the tl:dr;
+
+tRPC is a modern and lightweight framework for building typesafe API clients in TypeScript. It helps to simplify API communication and greatly enhances type safety. It's common for multiple projects or services to rely on a shared API structure or models.
+
+Most people will use tRPC in a monorepo structure, and while this is definitely the easiest approach this isn't always possible. In my specific instance I've worked on a number of React Native projects that just don't do well in a monorepo. I tried to find simple solutions or guides for how to share types from a tRPC repo into my React Native repo but ended up having to do all the footwork myself. 
+
+I'll share what that all entailed and how to go about exporting our types as a NPM (or Github) package for consumption from anywhere.
+
+## Setting up the tRPC Repository
+
+A typical TRPC repository follows a structured organization, separating API routes, controllers, and schema definitions. Types play a crucial role in tRPC repositories, ensuring proper handling of data payloads and guaranteeing type safety throughout the codebase. For this example we'll create a dead simple tRPC project to use as our guide. We'll start with the [Separate Backend and Frontend](https://trpc.io/docs/example-apps#separate-backend--frontend-repositories) example from the tRPC website. 
+
+If for your specific use case you don't want to publish a package to share types, then these repos are a great example of how to acomplish this. The remainder of this post will focus on adjusting the backend repo in from this example to publish a types package to your registry of choice, and adding and consuming these types.
+
+I've created a fork of this repo to ensure that it doesn't get lost or taken down after this post is published. I've switched the package manager to `yarn` instead of `npm` and also upgraded all of the dependencies as of posting. 
+
+If you'd just like to view the finished version with publishing scripts included that can be found [here.](https://github.com/billyjacoby/backend-trpc-api-boilerplate/tree/finished)
+
+
+We'll start off by cloning this repo and installing the necessary dependencies.
+
+```bash
+git clone https://github.com/billyjacoby/backend-trpc-api-boilerplate.git
+cd backend-trpc-api-boilerplate
+yarn install
+```
+
+After we've got this pulled we should be able to run and view out basica tRPC server that lists `Users` and `Batches` by visiting `http://localhost:4000`. This should look something like this:
+
+![Basic tRPC server running](/static/images/trpc-export/server.png)
+
+Visitng the links on this page should just return a JSON document containing the relevant objects.
+
+## Setting up the package scripting
+
+Now that we've got a basic server up and running we can start work on exporting the types as a package. 
+
+After running `yarn trpc-api-export` in the root of the project you'll see that we have our types exported in our `trpc-api-export/dist` folder. This is a great start! We'll want to add a new `package.json` file to this directory that includes any packages that we'll need in our client application. This is also how we'll name our types package so run through the `npm init` command in this directory and fill it out accordingly. In this example, the imports that you see in this directory's `index.d.ts` file. For this example we'll need the following packages:
+
+```javascript
+    "@trpc/server": "^10.43.3",
+    "express": "^4.18.2",
+    "express-serve-static-core": "^0.1.1",
+    "qs": "^6.11.2",
+    "superjson": "^2.2.1"
+```
+Though these can be installed using the `yarn add ...` command in the `trpc-api-export` directory, we don't actually need the packages installed again here. We just need to ensure that the client has them installed when they are using this package.
+
+Next in order to make this as easy as possible we want to add a bash script that will `cd` into the export directory and publish our package for us. I've noticed weirdness before when trying to do this without explicitly creating a workspace, so this is the best solution for me.
+
+Add a `bin/publish.sh` file that contains the following:
+
+```bash
+#!/bin/bash
+
+cd trpc-api-export && yarn publish
+echo "Published!"
+```
+
+Then make sure that you've got a publish script added to the `trpc-api-export/package.json` like this:
+
+```json
+...
+  "scripts": {
+    "publish": "npm publish --access public"
+  },
+...
+```
+
+## Publishing the package
+
+Once all of these steps are complete we should be ready to publish the types package. If you plan on publishing to NPM ensure that you've got your account setup as necessary here. To start we'll be publishing a public NPM package here. 
+
+Once you're all ready to go with NPM, lets edit our top level publish script to make sure that we're bundling the types before publishing.
+
+Our top level publish command should look something like this:
+
+`~/package.json`
+```json
+...
+  "scripts": {
+    "trpc-api-export": "tsup --config trpc-api-export/builder/tsup.config.ts && npm run format-fix",
+    "publish": "yarn trpc-api-export && ./bin/publish.sh",
+    ...
+  }
+...
+```
+
+Now when we run the `yarn publish` command at the project root, we'll be bundling and publishing our package to NPM!
+
+## Importing and using the package
+
+Importing types should be pretty straightforward. The one thing to remember is to add your package as a dev dependency to ensure that the dependencies of the types package are not added to your final build outputs.
+
+```bash
+yarn add -D @billyjacoby/trpc-example-package
+```
+
+And voila! After this, you can access all the exported types from your tRPC router in any other repo. In most cases importing the `AppRouter` and using that in conjunction with `inferRouterOutputs` & `inferRouterInputs` should get you every type that you could need. 
+
+As I mentioned this has come in super handy for me on a number of React Native projects. There are also a few other options for publishing these packages more privately. I usually publish private packages using Github's registry which makes it super easy to share the package with any repositories that belong to the same organization.
+
+
+## Versioning and Maintenance
+
+Versioning the exported types package is essential to ensure compatibility and backward compatibility when consuming repositories receive updates. Follow established versioning best practices, such as Semantic Versioning (SemVer), to communicate breaking changes or feature additions effectively.
+
+I've written a number of scripts that largely manage this aspect for me, and plan on publishing a follow up that includes a few of these.
+
+By far the most beneficial thing to add to all of this is automatic package publishing via CI. This can also be configured to publish to specific tags based on certain criteria. 
+
+## Conclusion
+
+Exporting and sharing types between repositories in tRPC projects offers significant benefits, such as improved collaboration, consistent data contracts, and enhanced type safety. Adopting this approach fosters reusable and maintainable codebases across different projects or services, facilitating seamless integration 
+
+If you're starting from scratch then I certainly recommend a monorepo approach wherever possible. But if you're like me then this isn't always the case. This has been the lowest friction way to share these types in my experience.
+
+Leave a comment below with any questions, or if you'd be interested in a post detailing the automation of this process using Github or Gitlab actions. Thanks for reading!
