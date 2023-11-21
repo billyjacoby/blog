@@ -1,0 +1,46 @@
+{
+  "$schema": "https://app.flightcontrol.dev/schema.json",
+  "environments": [
+    {
+      "id": "staging",
+      "name": "Staging",
+      "region": "us-east-1",
+      "source": {
+        "branch": "staging",
+        "pr": false,
+        "trigger": "push"
+      },
+      "services": [
+        {
+          "id": "next-js-app",
+          "name": "Next.js App",
+          "buildType": "nixpacks",
+          "cpu": 0.5,
+          "memory": 1,
+          "containerInsights": false,
+          "minInstances": 1,
+          "maxInstances": 1,
+          "versionHistoryCount": 10,
+          "basePath": ".",
+          "dockerfilePath": "Dockerfile",
+          "dockerContext": ".",
+          "installCommand": "yarn install",
+          "buildCommand": "yarn build",
+          "startCommand": "yarn serve",
+          "envVariables": {},
+          "autoscaling": {
+            "cpuThreshold": 70,
+            "memoryThreshold": 70,
+            "cooldownTimerSecs": 300,
+            "requestsPerTarget": 500
+          },
+          "includeEnvVariablesInBuild": true,
+          "type": "fargate",
+          "healthCheckPath": "/",
+          "enableCloudfrontSwr": false,
+          "port": 3000
+        }
+      ]
+    }
+  ]
+}
