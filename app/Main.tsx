@@ -9,6 +9,7 @@ import { Highlight, Paragraph, Heading3 } from '@/components/Typography';
 import { HighlightSection } from '@/components/HightlightSection';
 import { mainData } from '@/data/mainData';
 import React from 'react';
+import MainLayout from './mainLayout';
 
 const MAX_DISPLAY = 3;
 
@@ -19,7 +20,7 @@ export default function Home({ posts }) {
     setIsLoaded(true);
   }, []);
   return (
-    <>
+    <MainLayout>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         <div className="mb-5">
           <h1 className="text-2xl sm:text-3xl sm:leading-10 md:text-4xl md:leading-10">
@@ -150,6 +151,6 @@ export default function Home({ posts }) {
           <NewsletterForm />
         </div>
       )}
-    </>
+    </MainLayout>
   );
 }

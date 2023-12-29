@@ -76,6 +76,15 @@ const MobileNav = () => {
               </Link>
             </div>
           ))}
+          {/*//! Using a regular link here loads the wrong layout */}
+          <div className="px-12 py-4">
+            <a
+              href={'/resume'}
+              className="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100"
+            >
+              Resume
+            </a>
+          </div>
         </nav>
       </div>
     </>
