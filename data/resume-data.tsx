@@ -29,24 +29,24 @@ export const RESUME_DATA = {
   summary:
     'As a Full Stack Engineer, I have successfully taken multiple products from 0 to 1. I lead teams effectively, ensuring an environment where people can do their best work. Currently, I work mostly with TypeScript, React, Node.js, and GraphQL. I have over 8 years of experience in working remotely with companies all around the world.',
   avatarUrl: 'https://avatars.githubusercontent.com/u/27246508?v=4',
-  personalWebsiteUrl: 'https://jarocki.me',
+  personalWebsiteUrl: 'https://billyjacoby.com',
   contact: {
-    email: 'bartosz.jarocki@hey.com',
-    tel: '+48530213401',
+    email: 'billyjacoby@gmail.com',
+    tel: '+16313072188',
     social: [
       {
         name: 'GitHub',
-        url: 'https://github.com/BartoszJarocki',
+        url: 'https://github.com/billyjacoby',
         icon: GitHubIcon,
       },
       {
         name: 'LinkedIn',
-        url: 'https://www.linkedin.com/in/bjarocki/',
+        url: 'https://www.linkedin.com/in/billyjacoby/',
         icon: LinkedInIcon,
       },
       {
         name: 'X',
-        url: 'https://x.com/BartoszJarocki',
+        url: 'https://x.com/billyjacoby',
         icon: XIcon,
       },
     ],
