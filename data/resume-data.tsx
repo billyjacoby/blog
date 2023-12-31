@@ -1,20 +1,3 @@
-import ConsultlyLogo from '../images/logos/consultly.svg';
-import AmbitLogo from '../images/logos/ambit.png';
-import BarepapersLogo from '../images/logos/barepapers.svg';
-import BimLogo from '../images/logos/bim.png';
-import CDGOLogo from '../images/logos/cdgo.png';
-import ClevertechLogo from '../images/logos/clevertech.png';
-import EvercastLogo from '../images/logos/evercast.svg';
-import Howdy from '../images/logos/howdy.png';
-import JarockiMeLogo from '../images/logos/jarocki.svg';
-import JojoMobileLogo from '../images/logos/jojomobile.png';
-import MonitoLogo from '../images/logos/monito.svg';
-import MobileVikingsLogo from '../images/logos/mv.png';
-import NSNLogo from '../images/logos/nsn.svg';
-import ParabolLogo from '../images/logos/parabol.svg';
-import TastyCloudLogo from '../images/logos/tastycloud.png';
-import YearProgressLogo from '../images/logos/yearprogress.svg';
-import Minimal from '../images/logos/minimal.svg';
 import { GitHubIcon } from '@/components/resume/icons/GitHubIcon';
 import { LinkedInIcon } from '@/components/resume/icons/LinkedInIcon';
 import { XIcon } from '@/components/resume/icons/XIcon';
@@ -22,12 +5,12 @@ import { XIcon } from '@/components/resume/icons/XIcon';
 export const RESUME_DATA = {
   name: 'Billy Jacoby',
   initials: 'WKJ',
-  location: 'Brodheadsville Pennsylvania, USA',
+  location: 'Brodheadsville, Pennsylvania, USA',
   locationLink: 'https://www.google.com/maps/place/Brodheadsville',
   about:
-    'Full Stack Engineer focused on building products with extra attention to details',
+    'Experienced Full Stack Engineer focused on building performant and enjoyable applications',
   summary:
-    'As a Full Stack Engineer, I have successfully taken multiple products from 0 to 1. I lead teams effectively, ensuring an environment where people can do their best work. Currently, I work mostly with TypeScript, React, Node.js, and GraphQL. I have over 8 years of experience in working remotely with companies all around the world.',
+    'I focus building performant, mobile friendly applications. Strong problem-solving skills and a determination to learn and stay up to date with the latest technologies. I focus mostly on TypeScript, React, React Native, and Node.js.',
   avatarUrl: 'https://avatars.githubusercontent.com/u/27246508?v=4',
   personalWebsiteUrl: 'https://billyjacoby.com',
   contact: {
@@ -51,228 +34,199 @@ export const RESUME_DATA = {
       },
     ],
   },
-  education: [
-    {
-      school: 'Wrocław University of Technology',
-      degree: "Bachelor's Degree in Control systems engineering and Robotics",
-      start: '2007',
-      end: '2010',
-    },
-  ],
+  // education: [
+  //   {
+  //     school: 'Wrocław University of Technology',
+  //     degree: "Bachelor's Degree in Control systems engineering and Robotics",
+  //     start: '2007',
+  //     end: '2010',
+  //   },
+  // ],
   work: [
     {
-      company: 'Parabol',
-      link: 'https://parabol.co',
+      company: '28 Wellness',
+      link: 'https://28.co',
       badges: ['Remote'],
-      title: 'Senior Full Stack Developer',
-      logo: ParabolLogo,
-      start: '2021',
-      end: '2024',
+      title: 'Technical Lead',
+      start: '2023',
+      end: 'Now',
       description:
-        'Implemented new features, led squad, worked on improving the way developers ship the code, started migration from Emotion to Tailwind CSS and more. Technologies: React, TypeScript, GraphQL',
+        'Primary in house engineer for a fast growing health tech startup. Grew technical infrastructure to support increase from 50k MAU to over 500k MAU in a few months. Responsible for translating all product ideas and business decisions into technical projects, and also carried out a number of these projects from start to finish. Managed a combined team of in house engineers and contractors.',
     },
     {
-      company: 'Clevertech',
-      link: 'https://clevertech.biz',
+      company: 'Frontrunner',
+      link: 'https://twitter.com/frontrunnerxyz?lang=en',
       badges: ['Remote'],
-      title: 'Lead Android Developer → Full Stack Developer',
-      logo: ClevertechLogo,
-      start: '2015',
+      title: 'Software Engineer → Senior Software Engineer',
+      start: '2022',
+      end: '2023',
+      description:
+        "Led the Frontend team in developing the company's web application and native mobile apps. The project was architected and developed from ideation to delivery under my guidance, leveraging deep technical knowledge and experience in frontend development. Ensure team’s priorities stay aligned with the company’s direction and on track for timely completion.",
+    },
+    {
+      company: 'Solspace Wallet',
+      badges: ['Remote'],
+      title: 'Software Engineer',
+      start: '2020',
+      end: '2022',
+      description:
+        'Designed, architected, and optimized a React Native application that enabled interaction with the Solana blockchain using a Bluetooth hardware wallet. Technical challenges included scaling for thousands of users, optimizing code, and caching to improve performance.',
+    },
+    {
+      company: 'Prometheus Technology',
+      link: 'https://www.prometheus-ts.com',
+      badges: ['Owner'],
+      title: 'Software Engineer',
+      start: '2016',
       end: '2021',
       description:
-        'Created Android mobile apps and led teams for companies like Vision Media, DKMS, or AAA. Built live streaming application for Evercast from scratch. Technologies: Android, Kotlin, React, TypeScript, GraphQL',
-    },
-    {
-      company: 'Jojo Mobile',
-      link: 'https://bsgroup.eu/',
-      badges: [],
-      title: 'Android Developer → Lead Android Developer',
-      logo: JojoMobileLogo,
-      start: '2012',
-      end: '2015',
-      description:
-        'Built an Android team, created Android apps for biggest Polish companies like LOT, Polskie Radio, Agora, PolskaPress',
-    },
-    {
-      company: 'Nokia Siemens Networks',
-      link: 'https://www.nokia.com',
-      badges: [],
-      title: 'C/C++ Developer',
-      logo: NSNLogo,
-      start: '2010',
-      end: '2012',
-      description: 'Creating and testing software for LTE base stations',
+        'Overcome unique technical challenges designing and building custom websites and web applications for medium to large-sized businesses. Utilized my extensive knowledge of various programming languages and the ability to develop and implement bespoke e-commerce solutions. Through a combination of technical expertise and problem-solving skills, I successfully delivered tailored web solutions that met the specific needs of each customer.',
     },
   ],
   skills: [
     'JavaScript',
     'TypeScript',
     'React/Next.js/Remix',
+    'React Native',
     'Node.js',
     'GraphQL',
-    'Relay',
+    'tRPC',
     'WebRTC',
   ],
   projects: [
     {
-      title: 'Consultly',
-      techStack: [
-        'Side Project',
-        'TypeScript',
-        'Next.js',
-        'Vite',
-        'GraphQL',
-        'WebRTC',
-      ],
-      description: 'A platform to build and grow your online business',
-      logo: ConsultlyLogo,
+      title: '28 Wellness',
+      techStack: ['Full Time', 'TypeScript', 'Next.js', 'tRPC', 'React Native'],
+      description: "A women's health fitness platform and mobile application.",
       link: {
-        label: 'consultly.com',
-        href: 'https://consultly.com/',
+        label: '28.co',
+        href: 'https://28.co/',
       },
     },
     {
-      title: 'Monito',
-      techStack: ['Side Project', 'TypeScript', 'Next.js', 'Browser Extension'],
+      title: 'Browsernaut',
+      techStack: ['Side Project', 'TypeScript', 'Rust', 'Desktop App', 'Tauri'],
       description:
-        'Browser extension that records everything happening in a web application',
-      logo: MonitoLogo,
+        'A macOS application that opens URLs in various applications beyond web browsers.',
       link: {
-        label: 'monito.dev',
-        href: 'https://monito.dev/',
+        label: 'Browsernaut on GitHub',
+        href: 'https://github.com/billyjacoby/browsernaut',
       },
     },
     {
-      title: 'Jarocki.me',
-      techStack: ['Side Project', 'Next.js', 'MDX'],
+      title: 'Frontrunner',
+      techStack: ['Full Time', 'Next.js', 'React', 'React Native', 'Web3'],
       description:
-        'My personal website and blog. Built with Next.js and Notion API',
-      logo: JarockiMeLogo,
-      link: {
-        label: 'github.com',
-        href: 'https://jarocki.me/',
-      },
+        'A decentralized sports betting platform built on the Injective blockchain.',
     },
-    {
-      title: 'Minimal',
-      techStack: ['Side Project', 'Next.js', 'Puppeteer'],
-      description:
-        'Minimalist calendars, habit trackers and planners generator',
-      logo: Minimal,
-      link: {
-        label: 'useminimal.com',
-        href: 'https://useminimal.com/',
-      },
-    },
-    {
-      title: 'Barepapers',
-      techStack: ['Side Project', 'Next.js', 'Puppeteer'],
-      description:
-        'Generates beautiful wallpapers using random shapes and gradients',
-      logo: BarepapersLogo,
-      link: {
-        label: 'barepapers.com',
-        href: 'https://barepapers.com/',
-      },
-    },
-    {
-      title: 'Year progress',
-      techStack: ['Side Project', 'TypeScript', 'Next.js'],
-      description: 'Tracks current year progress and displays a countdown',
-      logo: YearProgressLogo,
-      link: {
-        label: 'getyearprogress.com',
-        href: 'https://getyearprogress.com/',
-      },
-    },
-    {
-      title: 'Parabol',
-      techStack: [
-        'Full Stack Developer',
-        'TypeScript',
-        'React',
-        'Node.js',
-        'GraphQL',
-      ],
-      description:
-        'The Agile meeting co-pilot that delivers better meetings with less effort',
-      logo: ParabolLogo,
-      link: {
-        label: 'github.com',
-        href: 'https://parabol.co/',
-      },
-    },
-    {
-      title: 'Evercast',
-      techStack: [
-        'Lead Frontend Developer',
-
-        'TypeScript',
-        'React',
-        'Node.js',
-        'GraphQL',
-      ],
-      description:
-        'Creative collaboration platform that combines video conferencing and HD media streaming',
-      logo: EvercastLogo,
-      link: {
-        label: 'evercast.us',
-        href: 'https://www.evercast.us/',
-      },
-    },
-    {
-      title: 'Mobile Vikings',
-      techStack: ['Lead Android Developer', 'Android', 'Kotlin'],
-      description:
-        'Android application for leading virtual mobile operator in Poland',
-      logo: MobileVikingsLogo,
-      link: {
-        label: 'mobilevikings.pl',
-        href: 'https://mobilevikings.pl/',
-      },
-    },
-    {
-      title: 'Howdy',
-      techStack: ['Lead Android Developer', 'Android', 'Kotlin'],
-      description:
-        'Howdy is a place for you to join communities you care about',
-      logo: Howdy,
-      link: {
-        label: 'play.google.com',
-        href: 'https://howdy.co/',
-      },
-    },
-    {
-      title: 'Tastycloud',
-      techStack: ['Lead Android Developer', 'Android', 'Kotlin'],
-      description:
-        'Android application for managing and displaying restaurant menus in kiosk mode',
-      logo: TastyCloudLogo,
-      link: {
-        label: 'tastycloud.fr',
-        href: 'https://www.tastycloud.fr/',
-      },
-    },
-    {
-      title: 'Ambit',
-      techStack: ['Lead Android Developer', 'Android', 'Kotlin'],
-      description:
-        'Android application that helps with sharing your contact details',
-      logo: AmbitLogo,
-    },
-    {
-      title: 'Bim',
-      techStack: ['Lead Android Developer', 'Android', 'Kotlin'],
-      description:
-        'Android application that helps with booking a table in a restaurants',
-      logo: BimLogo,
-    },
-    {
-      title: 'Canal Digital GO',
-      techStack: ['Lead Android Developer', 'Android', 'Kotlin'],
-      description:
-        'Video streaming mobile application for Canal Digital subscribers',
-      logo: CDGOLogo,
-    },
+    // {
+    //   title: 'Minimal',
+    //   techStack: ['Side Project', 'Next.js', 'Puppeteer'],
+    //   description:
+    //     'Minimalist calendars, habit trackers and planners generator',
+    //   link: {
+    //     label: 'useminimal.com',
+    //     href: 'https://useminimal.com/',
+    //   },
+    // },
+    // {
+    //   title: 'Barepapers',
+    //   techStack: ['Side Project', 'Next.js', 'Puppeteer'],
+    //   description:
+    //     'Generates beautiful wallpapers using random shapes and gradients',
+    //   link: {
+    //     label: 'barepapers.com',
+    //     href: 'https://barepapers.com/',
+    //   },
+    // },
+    // {
+    //   title: 'Year progress',
+    //   techStack: ['Side Project', 'TypeScript', 'Next.js'],
+    //   description: 'Tracks current year progress and displays a countdown',
+    //   link: {
+    //     label: 'getyearprogress.com',
+    //     href: 'https://getyearprogress.com/',
+    //   },
+    // },
+    // {
+    //   title: 'Parabol',
+    //   techStack: [
+    //     'Full Stack Developer',
+    //     'TypeScript',
+    //     'React',
+    //     'Node.js',
+    //     'GraphQL',
+    //   ],
+    //   description:
+    //     'The Agile meeting co-pilot that delivers better meetings with less effort',
+    //   link: {
+    //     label: 'github.com',
+    //     href: 'https://parabol.co/',
+    //   },
+    // },
+    // {
+    //   title: 'Evercast',
+    //   techStack: [
+    //     'Lead Frontend Developer',
+    //     'TypeScript',
+    //     'React',
+    //     'Node.js',
+    //     'GraphQL',
+    //   ],
+    //   description:
+    //     'Creative collaboration platform that combines video conferencing and HD media streaming',
+    //   link: {
+    //     label: 'evercast.us',
+    //     href: 'https://www.evercast.us/',
+    //   },
+    // },
+    // {
+    //   title: 'Mobile Vikings',
+    //   techStack: ['Lead Android Developer', 'Android', 'Kotlin'],
+    //   description:
+    //     'Android application for leading virtual mobile operator in Poland',
+    //   link: {
+    //     label: 'mobilevikings.pl',
+    //     href: 'https://mobilevikings.pl/',
+    //   },
+    // },
+    // {
+    //   title: 'Howdy',
+    //   techStack: ['Lead Android Developer', 'Android', 'Kotlin'],
+    //   description:
+    //     'Howdy is a place for you to join communities you care about',
+    //   link: {
+    //     label: 'play.google.com',
+    //     href: 'https://howdy.co/',
+    //   },
+    // },
+    // {
+    //   title: 'Tastycloud',
+    //   techStack: ['Lead Android Developer', 'Android', 'Kotlin'],
+    //   description:
+    //     'Android application for managing and displaying restaurant menus in kiosk mode',
+    //   link: {
+    //     label: 'tastycloud.fr',
+    //     href: 'https://www.tastycloud.fr/',
+    //   },
+    // },
+    // {
+    //   title: 'Ambit',
+    //   techStack: ['Lead Android Developer', 'Android', 'Kotlin'],
+    //   description:
+    //     'Android application that helps with sharing your contact details',
+    // },
+    // {
+    //   title: 'Bim',
+    //   techStack: ['Lead Android Developer', 'Android', 'Kotlin'],
+    //   description:
+    //     'Android application that helps with booking a table in a restaurants',
+    // },
+    // {
+    //   title: 'Canal Digital GO',
+    //   techStack: ['Lead Android Developer', 'Android', 'Kotlin'],
+    //   description:
+    //     'Video streaming mobile application for Canal Digital subscribers',
+    // },
   ],
 } as const;
