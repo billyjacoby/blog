@@ -1,3 +1,5 @@
+//? TSX files will be ignored by Content Layer
+
 import { GitHubIcon } from '@/components/resume/icons/GitHubIcon';
 import { LinkedInIcon } from '@/components/resume/icons/LinkedInIcon';
 import { XIcon } from '@/components/resume/icons/XIcon';
@@ -36,10 +38,10 @@ export const RESUME_DATA = {
   },
   // education: [
   //   {
-  //     school: 'Wrocław University of Technology',
-  //     degree: "Bachelor's Degree in Control systems engineering and Robotics",
-  //     start: '2007',
-  //     end: '2010',
+  //     school: 'Palm Beach State College',
+  //     degree: "Associate's Degree in Computer Science",
+  //     start: '2018',
+  //     end: '2020',
   //   },
   // ],
   work: [
@@ -114,119 +116,25 @@ export const RESUME_DATA = {
       },
     },
     {
+      title: 'Bird Watcher',
+      techStack: ['Side Project', 'TypeScript', 'React Native', 'NVR'],
+      description: 'A mobile app built to interface with Frigate NVR..',
+      link: {
+        label: 'Bird Watcher on GitHub',
+        href: 'https://github.com/billyjacoby/bird-watcher',
+      },
+    },
+    {
       title: 'Frontrunner',
       techStack: ['Full Time', 'Next.js', 'React', 'React Native', 'Web3'],
       description:
         'A decentralized sports betting platform built on the Injective blockchain.',
     },
-    // {
-    //   title: 'Minimal',
-    //   techStack: ['Side Project', 'Next.js', 'Puppeteer'],
-    //   description:
-    //     'Minimalist calendars, habit trackers and planners generator',
-    //   link: {
-    //     label: 'useminimal.com',
-    //     href: 'https://useminimal.com/',
-    //   },
-    // },
-    // {
-    //   title: 'Barepapers',
-    //   techStack: ['Side Project', 'Next.js', 'Puppeteer'],
-    //   description:
-    //     'Generates beautiful wallpapers using random shapes and gradients',
-    //   link: {
-    //     label: 'barepapers.com',
-    //     href: 'https://barepapers.com/',
-    //   },
-    // },
-    // {
-    //   title: 'Year progress',
-    //   techStack: ['Side Project', 'TypeScript', 'Next.js'],
-    //   description: 'Tracks current year progress and displays a countdown',
-    //   link: {
-    //     label: 'getyearprogress.com',
-    //     href: 'https://getyearprogress.com/',
-    //   },
-    // },
-    // {
-    //   title: 'Parabol',
-    //   techStack: [
-    //     'Full Stack Developer',
-    //     'TypeScript',
-    //     'React',
-    //     'Node.js',
-    //     'GraphQL',
-    //   ],
-    //   description:
-    //     'The Agile meeting co-pilot that delivers better meetings with less effort',
-    //   link: {
-    //     label: 'github.com',
-    //     href: 'https://parabol.co/',
-    //   },
-    // },
-    // {
-    //   title: 'Evercast',
-    //   techStack: [
-    //     'Lead Frontend Developer',
-    //     'TypeScript',
-    //     'React',
-    //     'Node.js',
-    //     'GraphQL',
-    //   ],
-    //   description:
-    //     'Creative collaboration platform that combines video conferencing and HD media streaming',
-    //   link: {
-    //     label: 'evercast.us',
-    //     href: 'https://www.evercast.us/',
-    //   },
-    // },
-    // {
-    //   title: 'Mobile Vikings',
-    //   techStack: ['Lead Android Developer', 'Android', 'Kotlin'],
-    //   description:
-    //     'Android application for leading virtual mobile operator in Poland',
-    //   link: {
-    //     label: 'mobilevikings.pl',
-    //     href: 'https://mobilevikings.pl/',
-    //   },
-    // },
-    // {
-    //   title: 'Howdy',
-    //   techStack: ['Lead Android Developer', 'Android', 'Kotlin'],
-    //   description:
-    //     'Howdy is a place for you to join communities you care about',
-    //   link: {
-    //     label: 'play.google.com',
-    //     href: 'https://howdy.co/',
-    //   },
-    // },
-    // {
-    //   title: 'Tastycloud',
-    //   techStack: ['Lead Android Developer', 'Android', 'Kotlin'],
-    //   description:
-    //     'Android application for managing and displaying restaurant menus in kiosk mode',
-    //   link: {
-    //     label: 'tastycloud.fr',
-    //     href: 'https://www.tastycloud.fr/',
-    //   },
-    // },
-    // {
-    //   title: 'Ambit',
-    //   techStack: ['Lead Android Developer', 'Android', 'Kotlin'],
-    //   description:
-    //     'Android application that helps with sharing your contact details',
-    // },
-    // {
-    //   title: 'Bim',
-    //   techStack: ['Lead Android Developer', 'Android', 'Kotlin'],
-    //   description:
-    //     'Android application that helps with booking a table in a restaurants',
-    // },
-    // {
-    //   title: 'Canal Digital GO',
-    //   techStack: ['Lead Android Developer', 'Android', 'Kotlin'],
-    //   description:
-    //     'Video streaming mobile application for Canal Digital subscribers',
-    // },
+    {
+      title: 'Solspace Wallet',
+      techStack: ['React Native', 'Bluetooth', 'Web3', 'Solana'],
+      description:
+        'A web3 wallet for Solana that connects to a hardware wallet via Bluetooth.',
+    },
   ],
 } as const;
