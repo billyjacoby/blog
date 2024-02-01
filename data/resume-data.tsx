@@ -12,7 +12,7 @@ export const RESUME_DATA = {
   about:
     'Experienced Full Stack Engineer focused on building performant and enjoyable applications',
   summary:
-    'I focus building performant, mobile friendly applications. Strong problem-solving skills and a determination to learn and stay up to date with the latest technologies. I focus mostly on TypeScript, React, React Native, and Node.js.',
+    'I specialize in the development of high-performing mobile first applications. I possess exceptional problem-solving abilities and continuously learn new things by staying up to date with cutting-edge technologies. I primarily focus my time around TypeScript, React, React Native, and Node.js frameworks.',
   avatarUrl: 'https://avatars.githubusercontent.com/u/27246508?v=4',
   personalWebsiteUrl: 'https://billyjacoby.com',
   contact: {

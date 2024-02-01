@@ -181,7 +181,7 @@ export default function Page() {
               );
             })}
           </Section> */}
-          <Section>
+          <Section className="break-before-page">
             <h2 className="text-xl font-bold">Skills</h2>
             <div className="flex flex-wrap gap-1">
               {RESUME_DATA.skills.map((skill) => {
@@ -192,19 +192,21 @@ export default function Page() {
 
           {RESUME_DATA.projects.length > 0 && (
             <Section className="scroll-mb-16">
-              <h2 className="text-xl font-bold">Projects</h2>
-              <div className="-mx-3 grid grid-cols-1 gap-3 print:grid-cols-3 print:gap-2 md:grid-cols-2 lg:grid-cols-3">
-                {RESUME_DATA.projects.map((project) => {
-                  return (
-                    <ProjectCard
-                      key={project.title}
-                      title={project.title}
-                      description={project.description}
-                      tags={project.techStack}
-                      link={'link' in project ? project.link.href : undefined}
-                    />
-                  );
-                })}
+              <div className="print:m-4">
+                <h2 className="text-xl font-bold print:mb-2">Projects</h2>
+                <div className="-mx-3 grid grid-cols-1 gap-3 print:grid-cols-3 print:gap-2 md:grid-cols-2 lg:grid-cols-3">
+                  {RESUME_DATA.projects.map((project) => {
+                    return (
+                      <ProjectCard
+                        key={project.title}
+                        title={project.title}
+                        description={project.description}
+                        tags={project.techStack}
+                        link={'link' in project ? project.link.href : undefined}
+                      />
+                    );
+                  })}
+                </div>
               </div>
             </Section>
           )}
