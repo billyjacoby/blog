@@ -4,42 +4,22 @@ import Tag from '@/components/Tag';
 import siteMetadata from '@/data/siteMetadata';
 import { formatDate } from 'pliny/utils/formatDate';
 import NewsletterForm from 'pliny/ui/NewsletterForm';
-import { Typewriter } from 'react-simple-typewriter';
 import { Highlight, Paragraph, Heading3 } from '@/components/Typography';
 import { HighlightSection } from '@/components/HightlightSection';
 import { mainData } from '@/data/mainData';
 import React from 'react';
+import MainLayout from '../layouts/MainLayout';
+import { Typewriter } from '@/components/Typewriter';
 
 const MAX_DISPLAY = 3;
 
 export default function Home({ posts }) {
-  const [isLoaded, setIsLoaded] = React.useState(false);
-
-  React.useEffect(() => {
-    setIsLoaded(true);
-  }, []);
   return (
-    <>
+    <MainLayout>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         <div className="mb-5">
           <h1 className="text-2xl sm:text-3xl sm:leading-10 md:text-4xl md:leading-10">
-            a <Highlight>collection</Highlight> of{' '}
-            {isLoaded && (
-              <Typewriter
-                words={[
-                  'blog posts.',
-                  'tech demos.',
-                  'tutorials.',
-                  'reviews.',
-                  'random thoughts.',
-                ]}
-                loop
-                typeSpeed={40}
-                deleteSpeed={40}
-                cursor
-                cursorColor="rgb(74 222 128 / var(--tw-text-opacity))"
-              />
-            )}
+            a <Highlight>collection</Highlight> of <Typewriter />
           </h1>
           <Paragraph>
             hi, I’m billy jacoby – a full time software engineer, tech
@@ -73,7 +53,7 @@ export default function Home({ posts }) {
           </ul>
         </div>
         <div className="space-y-2 pb-8 pt-6 md:space-y-5">
-          <h2 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 dark:text-gray-100">
+          <h2 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
             Latest Posts
           </h2>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
@@ -150,6 +130,6 @@ export default function Home({ posts }) {
           <NewsletterForm />
         </div>
       )}
-    </>
+    </MainLayout>
   );
 }

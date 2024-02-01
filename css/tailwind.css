@@ -22,6 +22,10 @@
   @apply my-5;
 }
 
+.print-force-new-page {
+  page-break-before: always;
+}
+
 /* https://stackoverflow.com/questions/61083813/how-to-avoid-internal-autofill-selected-style-to-be-applied */
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
