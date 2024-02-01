@@ -8,7 +8,7 @@ import { Highlight, Paragraph, Heading3 } from '@/components/Typography';
 import { HighlightSection } from '@/components/HightlightSection';
 import { mainData } from '@/data/mainData';
 import React from 'react';
-import MainLayout from '../components/layouts/main';
+import MainLayout from '../layouts/MainLayout';
 import { Typewriter } from '@/components/Typewriter';
 
 const MAX_DISPLAY = 3;

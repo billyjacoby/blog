@@ -1,4 +1,4 @@
-import MainLayout from '@/components/layouts/main';
+import MainLayout from '@/layouts/MainLayout';
 
 export default function RootLayout({
   children,
