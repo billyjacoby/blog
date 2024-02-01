@@ -7,7 +7,7 @@ export const Heading3 = (props: PropsWithClassName) => (
   <h3
     {...props}
     className={
-      'text-2xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-2xl sm:leading-10 md:text-4xl md:leading-14 dark:text-gray-100 ' +
+      'text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-2xl sm:leading-10 md:text-4xl md:leading-14 ' +
       props.className
     }
   >
@@ -19,7 +19,7 @@ export const Paragraph = (props: PropsWithClassName) => (
   <p
     {...props}
     className={
-      'mt-3 text-lg text-gray-900 sm:text-xl md:text-xl dark:text-gray-100 ' +
+      'mt-3 text-lg text-gray-900 dark:text-gray-100 sm:text-xl md:text-xl ' +
       props.className
     }
   >

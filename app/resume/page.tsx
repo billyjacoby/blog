@@ -23,7 +23,7 @@ export default function Page() {
         <Header />
         <PrintButton />
       </div>
-      <div className="container relative mx-auto overflow-auto p-4 pt-0 print:p-0 md:p-16 md:pt-4">
+      <div className="container relative mx-auto overflow-auto p-4 pt-0 md:p-16 md:pt-4 print:p-0">
         <section className="mx-auto w-full max-w-2xl space-y-8 print:space-y-6 print:bg-white print:text-black">
           <div className="flex items-center justify-between">
             <div className="flex-1 space-y-1.5">
@@ -194,7 +194,7 @@ export default function Page() {
             <Section className="scroll-mb-16">
               <div className="print:m-4">
                 <h2 className="text-xl font-bold print:mb-2">Projects</h2>
-                <div className="-mx-3 grid grid-cols-1 gap-3 print:grid-cols-3 print:gap-2 md:grid-cols-2 lg:grid-cols-3">
+                <div className="-mx-3 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 print:grid-cols-3 print:gap-2">
                   {RESUME_DATA.projects.map((project) => {
                     return (
                       <ProjectCard

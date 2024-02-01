@@ -18,7 +18,7 @@ export default function Footer() {
           <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={6} />
           <SocialIcon kind="twitter" href={siteMetadata.twitter} size={6} />
         </div>
-        <div className="mb-6 flex flex-wrap items-center space-x-2 text-center text-sm text-gray-500 sm:flex-nowrap dark:text-gray-400">
+        <div className="mb-6 flex flex-wrap items-center space-x-2 text-center text-sm text-gray-500 dark:text-gray-400 sm:flex-nowrap">
           <div className="0 flex flex-1 flex-row justify-center gap-2">
             <div className="whitespace-nowrap">{siteMetadata.author}</div>
             <div>{` | `}</div>
