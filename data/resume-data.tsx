@@ -97,6 +97,15 @@ export const RESUME_DATA = {
   ],
   projects: [
     {
+      title: '28 Wellness',
+      techStack: ['Full Time', 'TypeScript', 'Next.js', 'tRPC', 'React Native'],
+      description: "A women's health fitness platform and mobile application.",
+      link: {
+        label: '28.co',
+        href: 'https://28.co/',
+      },
+    },
+    {
       title: 'Browsernaut',
       techStack: ['Side Project', 'TypeScript', 'Rust', 'Desktop App', 'Tauri'],
       description:
