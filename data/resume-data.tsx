@@ -49,11 +49,11 @@ export const RESUME_DATA = {
       company: '28 Wellness',
       link: 'https://28.co',
       badges: ['Remote'],
-      title: 'Technical Lead',
+      title: 'Technical Lead -> Head of Engineering',
       start: '2023',
       end: 'Now',
       description:
-        'Primary in house engineer for a fast growing health tech startup. Grew technical infrastructure to support increase from 50k MAU to over 500k MAU in a few months. Responsible for translating all product ideas and business decisions into technical projects, and also carried out a number of these projects from start to finish. Managed a combined team of in house engineers and contractors.',
+        'Primary in house engineer for a fast growing health tech startup. Grew technical infrastructure to support increase from 50k MAU to over 500k MAU in a few months. Responsible for translating all product ideas and business decisions into technical projects, and also carrying out a number of these projects from start to finish. Managed a combined team of in house engineers and contractors.',
     },
     {
       company: 'Frontrunner',
@@ -96,15 +96,6 @@ export const RESUME_DATA = {
     'WebRTC',
   ],
   projects: [
-    {
-      title: '28 Wellness',
-      techStack: ['Full Time', 'TypeScript', 'Next.js', 'tRPC', 'React Native'],
-      description: "A women's health fitness platform and mobile application.",
-      link: {
-        label: '28.co',
-        href: 'https://28.co/',
-      },
-    },
     {
       title: 'Browsernaut',
       techStack: ['Side Project', 'TypeScript', 'Rust', 'Desktop App', 'Tauri'],
